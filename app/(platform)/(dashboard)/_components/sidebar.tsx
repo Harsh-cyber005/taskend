@@ -53,16 +53,15 @@ export const Sidebar = ({
         return (
             <>
                 <div className="flex items-center justify-between mb-2">
-                    <Skeleton className="h-10 w-[50%]"/>
-                    <Skeleton className="h-10 w-10"/>
+                    <Skeleton className="h-10 w-[50%] rounded-lg"/>
+                    <Skeleton className="h-10 w-10 rounded-lg"/>
                 </div>
                 <div className="space-y-2">
                     <NavItem.skeleton/>
-                    <NavItem.skeleton/>
-                    <NavItem.skeleton/>
-                    <NavItem.skeleton/>
-                    <NavItem.skeleton/>
-                    <NavItem.skeleton/>
+                    <NavItem.skeletonSided/>
+                    <NavItem.skeletonSided/>
+                    <NavItem.skeletonSided/>
+                    <NavItem.skeletonSided/>
                 </div>
             </>
         )

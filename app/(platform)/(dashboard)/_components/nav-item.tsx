@@ -34,22 +34,22 @@ export const NavItem = ({
         {
             label: "Boards",
             icon: <Layout className="h-4 w-4 mr-2" />,
-            href: `${organization.id}`,
+            href: [`/organization/${organization.id}`],
         },
         {
             label: "activity",
             icon: <Activity className="h-4 w-4 mr-2" />,
-            href: `${organization.id}/activity`,
+            href: [`/organization/${organization.id}/activity`],
         },
         {
             label: "Settings",
             icon: <Settings className="h-4 w-4 mr-2" />,
-            href: `${organization.id}/settings`,
+            href: [`/organization/${organization.id}/settings`, `/organization/${organization.id}/settings/organization-members`],
         },
         {
             label: "Billing",
             icon: <CreditCard className="h-4 w-4 mr-2" />,
-            href: `${organization.id}/billing`,
+            href: [`/organization/${organization.id}/billing`],
         }
     ];
 
@@ -87,14 +87,14 @@ export const NavItem = ({
             <AccordionContent className="pt-1 text-neutral-700">
                 {routes.map((route) => {
                     return <Button
-                        key={route.href}
+                        key={route?.href[0]}
                         size={"sm"}
                         onClick={() => {
-                            onClick(route.href)
+                            onClick(route?.href[0])
                         }}
                         className={cn(
                             "w-full font-normal justify-start pl-10 mb-1",
-                            pathname === ("/organization/"+route.href) && "bg-sky-500/10 text-sky-700"
+                            route?.href?.includes(pathname) && "bg-sky-500/10 text-sky-700"
                         )}
                         variant={"ghost"}
                     >
@@ -109,11 +109,21 @@ export const NavItem = ({
 
 NavItem.skeleton = function SkeletonNavItem(){
     return (
-        <div className="flex items-center gap-x-2">
-            <div className="w-10 h-10 relative shrink-0">
+        <div className="flex items-center gap-x-2 my-4">
+            <div className="w-8 h-8 relative shrink-0">
                 <Skeleton className="h-full w-full absolute"/>
             </div>
-            <Skeleton className="h-10 w-full"/>
+            <Skeleton className="h-8 w-full"/>
+        </div>
+    )
+}
+NavItem.skeletonSided = function SkeletonNavItem(){
+    return (
+        <div className="flex items-center gap-x-2 pl-6 my-2">
+            <div className="w-8 h-8 relative shrink-0">
+                <Skeleton className="h-full w-full absolute"/>
+            </div>
+            <Skeleton className="h-8 w-full"/>
         </div>
     )
 }

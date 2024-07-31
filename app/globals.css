@@ -4,6 +4,8 @@
 
   html,body,:root{
     height: 100%;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }
 
   @layer base {
